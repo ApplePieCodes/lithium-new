@@ -1,0 +1,6 @@
+option(
+    'arch',
+    type: 'string',
+    description: 'Target Architecture (x86_64, aarch64, etc.)',
+    value: 'x86_64'
+)

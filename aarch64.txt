@@ -1,0 +1,9 @@
+[binaries]
+c = 'aarch64-elf-gcc'
+ld = 'aarch64-elf-ld'
+
+[host_machine]
+system = 'linux'
+cpu_family = 'aarch64'
+cpu = 'aarch64'
+endian = 'little'
