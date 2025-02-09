@@ -1,5 +1,7 @@
 project('lithium', 'c')
 
+fs = import('fs')
+
 linker_scripts = {
     'x86_64': '../src/arch/x86_64/linker.ld',
     'aarch64': '../src/arch/aarch64/linker.ld'
@@ -30,7 +32,7 @@ if arch == 'aarch64'
     src += ['src/arch/aarch64/init.c']
 endif
 
-executable('kernel', src,
+executable('kernel.elf', src,
     include_directories: ['src/include'],
     c_args: cargs,
     link_args: ldargs
