@@ -1,6 +1,4 @@
-project('lithium', 'c')
-
-fs = import('fs')
+project('lithium', 'cpp')
 
 linker_scripts = {
     'x86_64': '../src/arch/x86_64/linker.ld',
@@ -22,14 +20,14 @@ ldargs = ['-nostdlib',
     '-static',
     '-T', linker_scripts[arch]]
 
-src = ['src/kmain.c']
+src = ['src/kmain.cpp']
 
 if arch == 'x86_64'
-    src += ['src/arch/x86_64/init.c']
+    src += ['src/arch/x86_64/init.cpp']
 endif
 
 if arch == 'aarch64'
-    src += ['src/arch/aarch64/init.c']
+    src += ['src/arch/aarch64/init.cpp']
 endif
 
 executable('kernel.elf', src,

@@ -1,4 +1,4 @@
-#include <kmain.h>
+#include <kmain.hpp>
 
 __attribute__((used, section(".limine_requests")))
 static volatile LIMINE_BASE_REVISION(3);

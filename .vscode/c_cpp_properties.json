@@ -10,11 +10,15 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "C:\\Program Files\\LLVM\\bin\\clang.exe",
+            "windowsSdkVersion": "10.0.22621.0",
+            "compilerPath": "cl.exe",
             "cStandard": "c17",
-            "cppStandard": "c++14",
-            "intelliSenseMode": "windows-clang-x64",
-            "configurationProvider": "mesonbuild.mesonbuild"
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64",
+            "configurationProvider": "mesonbuild.mesonbuild",
+            "compilerArgs": [
+                "-D__x86_64__=1"
+            ]
         }
     ],
     "version": 4

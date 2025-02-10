@@ -1,4 +1,4 @@
-#include <kmain.h>
+#include <kmain.hpp>
 
 void init() {
     kmain();
