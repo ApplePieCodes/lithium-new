@@ -1,4 +1,5 @@
 [binaries]
+c = 'aarch64-elf-gcc'
 cpp = 'aarch64-elf-g++'
 ld = 'aarch64-elf-ld'
 strip = 'aarch64-elf-strip'

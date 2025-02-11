@@ -1,4 +1,4 @@
-project('lithium', 'cpp')
+project('lithium', 'cpp', 'c')
 
 linker_scripts = {
     'x86_64': '../src/arch/x86_64/linker.ld',
@@ -12,7 +12,8 @@ cargs = ['-std=c99',
     '-fno-lto',
     '-fno-pie',
     '-fno-pic',
-    '-mcmodel=kernel']
+    '-mcmodel=kernel',
+    '-nostdinc']
 
 arch = get_option('arch')
 
@@ -20,18 +21,24 @@ ldargs = ['-nostdlib',
     '-static',
     '-T', linker_scripts[arch]]
 
-src = ['src/kmain.cpp']
+src = ['src/kmain.cpp', 
+    'src/term/flanterm.c', 
+    'src/term/backends/fb.c', 
+    'src/term/term.c',
+    'src/libc/string.c']
 
 if arch == 'x86_64'
-    src += ['src/arch/x86_64/init.cpp']
+    src += ['src/arch/x86_64/init.cpp', 'src/arch/x86_64/gdt.c']
 endif
 
 if arch == 'aarch64'
     src += ['src/arch/aarch64/init.cpp']
 endif
 
+include_dirs = ['src/include']
+
 executable('kernel.elf', src,
-    include_directories: ['src/include'],
+    include_directories: include_dirs,
     c_args: cargs,
     link_args: ldargs
 )

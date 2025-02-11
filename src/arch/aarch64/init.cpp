@@ -1,5 +1,5 @@
 #include <kmain.hpp>
 
-void init() {
+extern "C" void init() {
     kmain();
 }

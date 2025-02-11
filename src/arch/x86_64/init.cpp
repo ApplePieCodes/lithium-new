@@ -1,7 +1,8 @@
-#include <kmain.h>
+#include <kmain.hpp>
+#include <libc/stdint.h>
+#include <term/term.h>
 
-
-
-void init() {
+extern "C" void init() {
+    terminal_init();
     kmain();
 }
