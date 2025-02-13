@@ -1,6 +1,6 @@
 #pragma once
 
-#include <libc/stdbool.h>
+#include <stdbool.h>
 
 typedef struct lock {
     bool locked;

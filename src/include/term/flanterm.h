@@ -30,9 +30,9 @@
 extern "C" {
 #endif
 
-#include <libc/stddef.h>
-#include <libc/stdint.h>
-#include <libc/stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
 
 #define FLANTERM_MAX_ESC_VALUES 16
 
