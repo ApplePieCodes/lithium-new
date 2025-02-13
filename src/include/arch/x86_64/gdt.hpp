@@ -57,8 +57,4 @@ typedef struct tss {
     unsigned short IOPB;
 } __attribute__((packed)) tss_t;
 
-static gdt_t gdt_table;
-
-static tss_t tss_table;
-
 void gdt_init();

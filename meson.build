@@ -5,15 +5,15 @@ linker_scripts = {
     'aarch64': '../src/arch/aarch64/linker.ld'
 }
 
-cargs = ['-std=c99',
-    '-ffreestanding',
+cargs = ['-ffreestanding',
     '-fno-stack-protector',
     '-fno-stack-check',
     '-fno-lto',
     '-fno-pie',
     '-fno-pic',
     '-mcmodel=kernel',
-    '-nostdinc']
+    '-nostdinc',
+    '-mno-red-zone']
 
 arch = get_option('arch')
 

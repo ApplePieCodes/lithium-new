@@ -1,5 +1,9 @@
 #include <arch/x86_64/gdt.hpp>
 
+static gdt_t gdt_table;
+
+static tss_t tss_table;
+
 void gdt_init() {
     //Null Segment
     gdt_table.null.limit = 0x0000;
