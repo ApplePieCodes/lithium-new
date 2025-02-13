@@ -28,7 +28,7 @@ src = ['src/kmain.cpp',
     'src/libc/string.c']
 
 if arch == 'x86_64'
-    src += ['src/arch/x86_64/init.cpp', 'src/arch/x86_64/gdt.c']
+    src += ['src/arch/x86_64/init.cpp', 'src/arch/x86_64/gdt.cpp']
 endif
 
 if arch == 'aarch64'
