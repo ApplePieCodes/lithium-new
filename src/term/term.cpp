@@ -2,15 +2,15 @@
 
 #include <term/flanterm.h>
 #include <term/backends/fb.h>
-#include <types/spinlock.h>
+#include <types/spinlock.hpp>
 #include <string.h>
 #include <kmain.hpp>
 
 struct flanterm_context *flanterm_ctx;
-lock_t term_lock;
+spinlock term_lock;
 
 void terminal_init() {
-    spinlock_lock(&term_lock);
+    term_lock.lock();
     
     if (framebuffer_request.response->framebuffer_count < 1) {
         //TODO: Panic
@@ -20,18 +20,18 @@ void terminal_init() {
 
     flanterm_ctx = flanterm_fb_init(NULL, NULL, (uint32_t*)framebuffer->address, framebuffer->width, framebuffer->height, framebuffer->pitch, framebuffer->red_mask_size, framebuffer->red_mask_shift, framebuffer->green_mask_size, framebuffer->green_mask_shift, framebuffer->blue_mask_size, framebuffer->blue_mask_shift, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0);
 
-    spinlock_unlock(&term_lock);
+    term_lock.unlock();
 
     tinfo("Initializing Terminal");
     tinfo("Terminal Initialized");
 }
 
 void twrite(const char *c) {
-    spinlock_lock(&term_lock);
+    term_lock.lock();
 
     flanterm_write(flanterm_ctx, c, strlen(c));
 
-    spinlock_unlock(&term_lock);
+    term_lock.unlock();
 }
 
 void tinfo(const char *c) {

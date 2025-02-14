@@ -1,16 +1,9 @@
 #pragma once
 
-#define GDT_NULL            0x00
-#define GDT_CODE_16         0x08
-#define GDT_DATA_16         0x10
-#define GDT_CODE_32         0x18
-#define GDT_DATA_32         0x20
-#define GDT_CODE_64         0x28
-#define GDT_DATA_64         0x30
-#define GDT_USER_CODE_64    0x38
-#define GDT_USER_DATA_64    0x40
-#define GDT_TSS             0x48
+#include <term/term.hpp>
+#include <stdint.h>
 
+/// @brief GDT Entry
 struct gdt_entry
 {
     unsigned short limit;
@@ -21,6 +14,7 @@ struct gdt_entry
     unsigned char base2;
 } __attribute__((packed));
 
+/// @brief TSS Descriptor
 struct tss_desc {
     unsigned short limit;
     unsigned short base0;
@@ -32,11 +26,13 @@ struct tss_desc {
     unsigned int reserved;
 } __attribute__((packed));
 
+/// @brief GDT Descriptor
 struct gdt_desc {
     unsigned short limit;
     unsigned long base;
 } __attribute__((packed));
 
+/// @brief Represents the GDT
 struct gdt {
     struct gdt_entry null;
     struct gdt_entry code_16;
@@ -50,6 +46,7 @@ struct gdt {
     struct tss_desc tss;
 } __attribute__((packed));
 
+/// @brief Represents The TSS
 struct tss {
     unsigned int reserved0;
     unsigned long rsp0;
@@ -68,16 +65,5 @@ struct tss {
     unsigned short IOPB;
 } __attribute__((packed));
 
-#ifdef __cplusplus
-
-extern "C" {
-
-#endif
-
+/// @brief Initializes the GDT
 void gdt_init();
-
-#ifdef __cplusplus
-
-}
-
-#endif
