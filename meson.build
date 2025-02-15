@@ -34,10 +34,17 @@ src = ['src/kmain.cpp',
     'src/term/flanterm.c', 
     'src/term/backends/fb.c', 
     'src/term/term.cpp',
-    'src/libc/string.c']
+    'src/libc/string.c',
+    'src/utils/panic.cpp']
 
 if arch == 'x86_64'
-    src += ['src/arch/x86_64/init.cpp', 'src/arch/x86_64/gdt.cpp', 'src/arch/x86_64/asm/gdtutil.asm']
+    src += ['src/arch/x86_64/init.cpp',
+    'src/arch/x86_64/gdt.cpp',
+    'src/arch/x86_64/asm/gdt.asm',
+    'src/arch/x86_64/asm/idt.asm',
+    'src/arch/x86_64/asm/isr.asm',
+    'src/arch/x86_64/idt.cpp',
+    'src/arch/x86_64/isr.cpp']
 endif
 
 if arch == 'aarch64'
